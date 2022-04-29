@@ -2,8 +2,13 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
+app.set('view engine', 'hbs');
 //Servir contenido estatico  las tutas se hacen con la ruta publica
 app.use(express.static('public'));
+
+app.get('/', function (req, res) {
+  res.render('home');
+})
 
 app.get('/elements', function (req, res) {
   res.sendFile(__dirname + '/public/elements.html');
