@@ -5,17 +5,16 @@ const port = 8080;
 //Servir contenido estatico  las tutas se hacen con la ruta publica
 app.use(express.static('public'));
 
-//si la ruta no existe entra aqui
-/*app.get('/run', function (req, res) {
-    res.send('Run')
-});
-  
-app.get('*', function (req, res) {
-  res.send('404 | Page not found')
-});*/
+app.get('/elements', function (req, res) {
+  res.sendFile(__dirname + '/public/elements.html');
+})
+
+app.get('/generic', function (req, res) {
+  res.sendFile(__dirname + '/public/generic.html');
+})
 
 app.get('*', function (req, res) {
-    res.sendFile(__dirname + '/public/404.html');
+    res.send('404 Error');
 })
 
 app.listen(port, () => {
